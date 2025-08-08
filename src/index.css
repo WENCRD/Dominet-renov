@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles de base */
+@layer base {
+  body {
+    @apply font-sans text-slate-700 bg-slate-50;
+  }
+  h1,h2,h3,h4 {
+    @apply text-brand-blue;
+  }
+}
+
+/* Boutons */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl2 bg-brand-blue text-white px-5 py-3 font-medium shadow hover:brightness-110 transition;
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl2 bg-brand-yellow text-brand-blue px-5 py-3 font-medium shadow hover:brightness-105 transition;
+  }
+  .card {
+    @apply rounded-xl2 bg-white border border-slate-200 shadow-card;
+  }
+  .section {
+    @apply py-12 md:py-16;
+  }
+  .container-pro {
+     @apply container mx-auto max-w-7xl;
+  }
+}
