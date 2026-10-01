@@ -17,16 +17,43 @@
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-xl2 bg-brand-blue text-white px-5 py-3 font-medium shadow hover:brightness-110 transition;
   }
+
   .btn-accent {
     @apply inline-flex items-center justify-center gap-2 rounded-xl2 bg-brand-yellow text-brand-blue px-5 py-3 font-medium shadow hover:brightness-105 transition;
   }
+
   .card {
     @apply rounded-xl2 bg-white border border-slate-200 shadow-card;
   }
+
+  /* Espacement vertical des grandes sections */
   .section {
-    @apply py-12 md:py-16;
+    @apply py-16 md:py-20 lg:py-24;
   }
+
+  /* Conteneur responsive */
   .container-pro {
-     @apply container mx-auto max-w-7xl;
+    @apply w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12;
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

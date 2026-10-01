@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { X } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X, Mail, Home, Images, Star } from "lucide-react";
 import ContactModal from "./ContactModal";
 
 export default function Navbar() {
@@ -7,75 +8,286 @@ export default function Navbar() {
   const [openContact, setOpenContact] = useState(false);
 
   return (
-    <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
-      <div className="container-pro flex items-center justify-between h-16">
-        <a href="/" className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-xl2 bg-brand-yellow grid place-items-center font-bold text-slate-900">
-            DR
-          </div>
-          <span className="font-semibold text-lg">DOMINET Rénov</span>
-        </a>
+    <>
+      <header
+        className="
+          sticky top-0 z-40
+          bg-white/95
+          backdrop-blur-md
+          border-b border-slate-200/70
+          shadow-sm
+        "
+      >
+        <div className="container-pro flex items-center justify-between h-[76px]">
 
-        {/* Menu desktop */}
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="#prestations">Prestations</a>
-          <a href="#realisations">Réalisations</a>
-          <a href="#avis">Avis</a>
-          <button
-            className="hover:text-brand"
-            onClick={() => setOpenContact(true)}
+          {/* LOGO */}
+          <Link
+            to="/"
+            className="flex items-center gap-3 group"
+            aria-label="Accueil DOMINET Rénov"
           >
-            Contact
-          </button>
-          <a className="btn-accent" href="#devis">Devis gratuit</a>
-        </nav>
+            <img
+              src="/Dominet renov.jpg"
+              alt="DOMINET Rénov"
+              className="
+                w-[58px]
+                h-[58px]
+                object-contain
+                rounded-xl
+              "
+            />
 
-        {/* Burger menu mobile */}
-        <button
-          className="md:hidden p-2"
-          onClick={() => setOpenMenu(true)}
-          aria-label="Ouvrir le menu"
-        >
-          ☰
-        </button>
-      </div>
+            <div className="hidden sm:block leading-tight">
+              <p className="font-bold text-brand-blue text-lg">
+                DOMINET
+              </p>
 
-      {/* Menu mobile */}
-      {openMenu && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          <div
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setOpenMenu(false)}
-          />
-          <div className="absolute top-0 right-0 w-64 h-full bg-white shadow-lg p-6 flex flex-col gap-6">
-            <button
-              className="self-end p-2"
-              onClick={() => setOpenMenu(false)}
-              aria-label="Fermer le menu"
+              <p className="text-xs text-slate-500">
+                Rénovation
+              </p>
+            </div>
+          </Link>
+
+          {/* MENU DESKTOP */}
+          <nav className="hidden lg:flex items-center gap-7">
+            <Link
+              to="/#prestations"
+              className="text-sm font-medium text-slate-700 hover:text-brand-blue transition"
             >
-              <X className="h-6 w-6" />
-            </button>
-            <a href="#prestations" onClick={() => setOpenMenu(false)}>Prestations</a>
-            <a href="#realisations" onClick={() => setOpenMenu(false)}>Réalisations</a>
-            <a href="#avis" onClick={() => setOpenMenu(false)}>Avis</a>
+              Prestations
+            </Link>
+
+            <Link
+              to="/realisations"
+              className="text-sm font-medium text-slate-700 hover:text-brand-blue transition"
+            >
+              Réalisations
+            </Link>
+
+            <Link
+              to="/#avis"
+              className="text-sm font-medium text-slate-700 hover:text-brand-blue transition"
+            >
+              Avis
+            </Link>
+
             <button
-              onClick={() => {
-                setOpenMenu(false);
-                setOpenContact(true);
-              }}
-              className="text-left"
+              type="button"
+              onClick={() => setOpenContact(true)}
+              className="text-sm font-medium text-slate-700 hover:text-brand-blue transition"
             >
               Contact
             </button>
-            <a className="btn-accent justify-center" href="#devis" onClick={() => setOpenMenu(false)}>
-              Devis gratuit
-            </a>
+
+            <Link
+              to="/#devis"
+              className="btn-accent px-5 py-3"
+            >
+              Demander un devis
+            </Link>
+          </nav>
+
+          {/* BURGER TABLETTE / MOBILE */}
+          <button
+            type="button"
+            className="
+              lg:hidden
+              flex items-center justify-center
+              w-11 h-11
+              rounded-xl
+              bg-slate-100
+              text-brand-blue
+              hover:bg-slate-200
+              transition
+            "
+            onClick={() => setOpenMenu(true)}
+            aria-label="Ouvrir le menu"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+        </div>
+      </header>
+
+      {/* MENU MOBILE */}
+      {openMenu && (
+        <div className="fixed inset-0 z-[60] lg:hidden">
+
+          {/* Fond */}
+          <div
+            className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm"
+            onClick={() => setOpenMenu(false)}
+          />
+
+          {/* Panneau */}
+          <div
+            className="
+              absolute
+              top-0 right-0
+              w-[88%]
+              max-w-[360px]
+              h-full
+              bg-white
+              shadow-2xl
+              flex flex-col
+            "
+          >
+
+            {/* Haut */}
+            <div className="flex items-center justify-between p-5 border-b border-slate-100">
+
+              <Link
+                to="/"
+                onClick={() => setOpenMenu(false)}
+                className="flex items-center gap-3"
+              >
+                <img
+                  src="/Dominet renov.jpg"
+                  alt="DOMINET Rénov"
+                  className="w-[62px] h-[62px] object-contain rounded-xl"
+                />
+
+                <div>
+                  <p className="font-bold text-brand-blue">
+                    DOMINET
+                  </p>
+
+                  <p className="text-xs text-slate-500">
+                    Rénovation
+                  </p>
+                </div>
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => setOpenMenu(false)}
+                className="
+                  flex items-center justify-center
+                  w-10 h-10
+                  rounded-full
+                  bg-slate-100
+                  text-slate-600
+                "
+                aria-label="Fermer le menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Navigation */}
+            <nav className="flex-1 p-5 space-y-2">
+
+              <Link
+                to="/#prestations"
+                onClick={() => setOpenMenu(false)}
+                className="
+                  flex items-center gap-4
+                  px-4 py-4
+                  rounded-2xl
+                  text-slate-700
+                  hover:bg-slate-50
+                  transition
+                "
+              >
+                <Home className="w-5 h-5 text-brand-blue" />
+
+                <span className="font-medium">
+                  Prestations
+                </span>
+              </Link>
+
+              <Link
+                to="/realisations"
+                onClick={() => setOpenMenu(false)}
+                className="
+                  flex items-center gap-4
+                  px-4 py-4
+                  rounded-2xl
+                  text-slate-700
+                  hover:bg-slate-50
+                  transition
+                "
+              >
+                <Images className="w-5 h-5 text-brand-blue" />
+
+                <span className="font-medium">
+                  Réalisations
+                </span>
+              </Link>
+
+              <Link
+                to="/#avis"
+                onClick={() => setOpenMenu(false)}
+                className="
+                  flex items-center gap-4
+                  px-4 py-4
+                  rounded-2xl
+                  text-slate-700
+                  hover:bg-slate-50
+                  transition
+                "
+              >
+                <Star className="w-5 h-5 text-brand-blue" />
+
+                <span className="font-medium">
+                  Avis clients
+                </span>
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setOpenMenu(false);
+                  setOpenContact(true);
+                }}
+                className="
+                  w-full
+                  flex items-center gap-4
+                  px-4 py-4
+                  rounded-2xl
+                  text-slate-700
+                  hover:bg-slate-50
+                  transition
+                  text-left
+                "
+              >
+                <Mail className="w-5 h-5 text-brand-blue" />
+
+                <span className="font-medium">
+                  Contact
+                </span>
+              </button>
+            </nav>
+
+            {/* CTA BAS DU MENU */}
+            <div className="p-5 border-t border-slate-100">
+              <Link
+                to="/#devis"
+                onClick={() => setOpenMenu(false)}
+                className="
+                  btn-accent
+                  w-full
+                  py-4
+                  justify-center
+                  text-center
+                "
+              >
+                Demander un devis
+              </Link>
+
+              <p className="mt-4 text-xs text-center text-slate-400">
+                DOMINET RÉNOVATION
+              </p>
+            </div>
           </div>
         </div>
       )}
 
-      {/* Modal de contact */}
-      {openContact && <ContactModal onClose={() => setOpenContact(false)} />}
-    </header>
+      {/* MODAL CONTACT */}
+      {openContact && (
+        <ContactModal
+          onClose={() => setOpenContact(false)}
+        />
+      )}
+    </>
   );
 }
