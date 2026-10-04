@@ -28,7 +28,7 @@ export default function Navbar() {
             aria-label="Accueil DOMINET Rénov"
           >
             <img
-              src="/Dominet renov.jpg"
+              src={asset("/Dominet renov.jpg")}
               alt="DOMINET Rénov"
               className="
                 w-[58px]
