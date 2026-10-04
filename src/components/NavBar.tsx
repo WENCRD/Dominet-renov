@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Mail, Home, Images, Star } from "lucide-react";
 import ContactModal from "./ContactModal";
+import { asset } from "../utils/asset";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -141,7 +142,7 @@ export default function Navbar() {
                 className="flex items-center gap-3"
               >
                 <img
-                  src="/Dominet renov.jpg"
+                  src={asset("/Dominet renov.jpg")}
                   alt="DOMINET Rénov"
                   className="w-[62px] h-[62px] object-contain rounded-xl"
                 />

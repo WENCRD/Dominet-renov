@@ -23,7 +23,7 @@ export default function HomePage() {
             <div className="mb-6 flex justify-center lg:justify-start">
               <div className="bg-white rounded-3xl p-3 shadow-lg border border-slate-100">
                 <img
-                  src="/Dominet renov.jpg"
+                  src={asset("/Dominet renov.jpg")}
                   alt="DOMINET Rénov"
                   className="
         w-[130px]
@@ -83,7 +83,7 @@ export default function HomePage() {
               title="Revêtements de sol"
               description="Parquet, stratifié, carrelage et plinthes."
               slug="sol"
-              image="/rsol.jpg"
+              image={asset("/rsol.jpg")}
               accent="bg-amber-600"
             />
 
@@ -91,7 +91,7 @@ export default function HomePage() {
               title="Salle de bain"
               description="Rénovation complète, étanchéité et faïence."
               slug="salledebain"
-              image="/sdb.jpg"
+              image={asset("/sdb.jpg")}
               accent="bg-cyan-500"
             />
 
@@ -99,7 +99,7 @@ export default function HomePage() {
               title="Cloison & placo"
               description="Cloisons, doublages, isolation et plafonds."
               slug="placo"
-              image="/cp.jpg"
+              image={asset("/cp.jpg")}
               accent="bg-slate-400"
             />
 
@@ -107,10 +107,10 @@ export default function HomePage() {
               title="Menuiserie"
               description="Pose de portes, fenêtres, cuisine et rangements."
               slug="menuiserie"
-              image="/ebm.jpg"
+              image={asset("/ebm.jpg")}
               accent="bg-orange-500"
             />
-{/* 
+            {/* 
             <ServiceCard
               title="Façade & extérieur"
               description="Nettoyage, ravalement et petite maçonnerie."
@@ -123,7 +123,7 @@ export default function HomePage() {
               title="Électricité"
               description="Installation, rénovation et mise aux normes électriques."
               slug="electricite"
-              image="/te.jpg"
+              image={asset("/te.jpg")}
               accent="bg-yellow-400"
             />
 
@@ -131,7 +131,7 @@ export default function HomePage() {
               title="Intervention après sinistre"
               description="Remise en état après dégâts des eaux et autres sinistres."
               slug="sinistre"
-              image="/is.jpg"
+              image={asset("/is.jpg")}
               accent="bg-red-500"
             />
           </div>

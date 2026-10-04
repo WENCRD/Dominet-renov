@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { X, Images, ArrowUp } from "lucide-react";
 import Footer from "../components/Footer";
+import { asset } from "../utils/asset";
 
 type Realisation = {
   image: string;
@@ -16,33 +17,42 @@ type Service = {
 
 const realisationsData: Realisation[] = [
   // SOL
-  { image: "/realisations/sol/sol1.jpg", service: "sol" },
-  { image: "/realisations/sol/sol2.jpg", service: "sol" },
-  { image: "/realisations/sol/sol3.jpg", service: "sol" },
+  { image: asset("/realisations/sol/sol1.jpg"), service: "sol" },
+  { image: asset("/realisations/sol/sol2.jpg"), service: "sol" },
+  { image: asset("/realisations/sol/sol3.jpg"), service: "sol" },
 
   // PEINTURE
-  { image: "/realisations/peinture/peinture1.jpg", service: "peinture" },
-  { image: "/realisations/peinture/peinture2.jpg", service: "peinture" },
+  {
+    image: asset("/realisations/peinture/peinture1.jpg"),
+    service: "peinture",
+  },
+  {
+    image: asset("/realisations/peinture/peinture2.jpg"),
+    service: "peinture",
+  },
 
   // SALLE DE BAIN
-  { image: "/realisations/sdb/sdb1.jpg", service: "salledebain" },
-  { image: "/realisations/sdb/sdb2.jpg", service: "salledebain" },
+  { image: asset("/realisations/sdb/sdb1.jpg"), service: "salledebain" },
+  { image: asset("/realisations/sdb/sdb2.jpg"), service: "salledebain" },
 
   // PLACO
-  { image: "/realisations/placo/placo1.jpg", service: "placo" },
+  { image: asset("/realisations/placo/placo1.jpg"), service: "placo" },
 
   // MENUISERIE
   {
-    image: "/realisations/menuiserie/menuiserie1.jpg",
+    image: asset("/realisations/menuiserie/menuiserie1.jpg"),
     service: "menuiserie",
   },
 
   // FAÇADE
-  { image: "/realisations/facade/facade1.jpg", service: "facade" },
+  {
+    image: asset("/realisations/facade/facade1.jpg"),
+    service: "facade",
+  },
 
   // Quand tu auras les photos :
-  // { image: "/realisations/electricite/electricite1.jpg", service: "electricite" },
-  // { image: "/realisations/sinistre/sinistre1.jpg", service: "sinistre" },
+  // { image: asset("/realisations/electricite/electricite1.jpg"), service: "electricite" },
+  // { image: asset("/realisations/sinistre/sinistre1.jpg"), service: "sinistre" },
 ];
 
 const services: Service[] = [
