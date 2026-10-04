@@ -1,16 +1,16 @@
 import { useRef, useEffect, useState } from "react";
-
+import { asset } from "../utils/asset"; 
 const images = [
   {
-    src: "/sdbc.avif",
+    src: asset("/sdbc.avif"),
     label: "Un espace pensé pour votre confort",
   },
   {
-    src: "/salon.avif",
+    src: asset("/salon.avif"),
     label: "Transformez votre intérieur",
   },
   {
-    src: "/cuisine.avif",
+    src: asset("/cuisine.avif"),
     label: "Une cuisine à votre image",
   },
 ];
