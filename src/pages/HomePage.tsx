@@ -2,6 +2,7 @@ import Footer from "../components/Footer";
 import ServiceCard from "../components/ServiceCard";
 import HeroCarousel from "../components/HeroCarousel";
 import { Helmet } from "react-helmet-async";
+import { asset } from "../utils/asset";
 // import Contact from "../components/Contact";
 
 export default function HomePage() {
@@ -74,7 +75,7 @@ export default function HomePage() {
               title="Peinture intérieure"
               description="Préparation, enduits, finitions mates et satinées."
               slug="peinture"
-              image="/images/peinture.jpg"
+              image={asset("/speinture.jpg")}
               accent="bg-blue-500"
             />
 
@@ -82,7 +83,7 @@ export default function HomePage() {
               title="Revêtements de sol"
               description="Parquet, stratifié, carrelage et plinthes."
               slug="sol"
-              image="/images/sol.jpg"
+              image="/rsol.jpg"
               accent="bg-amber-600"
             />
 
@@ -90,7 +91,7 @@ export default function HomePage() {
               title="Salle de bain"
               description="Rénovation complète, étanchéité et faïence."
               slug="salledebain"
-              image="/images/salle-de-bain.jpg"
+              image="/sdb.jpg"
               accent="bg-cyan-500"
             />
 
@@ -98,7 +99,7 @@ export default function HomePage() {
               title="Cloison & placo"
               description="Cloisons, doublages, isolation et plafonds."
               slug="placo"
-              image="/images/placo.jpg"
+              image="/cp.jpg"
               accent="bg-slate-400"
             />
 
@@ -106,23 +107,23 @@ export default function HomePage() {
               title="Menuiserie"
               description="Pose de portes, fenêtres, cuisine et rangements."
               slug="menuiserie"
-              image="/images/menuiserie.jpg"
+              image="/ebm.jpg"
               accent="bg-orange-500"
             />
-
+{/* 
             <ServiceCard
               title="Façade & extérieur"
               description="Nettoyage, ravalement et petite maçonnerie."
               slug="facade"
               image="/images/facade.jpg"
               accent="bg-emerald-500"
-            />
+            /> */}
 
             <ServiceCard
               title="Électricité"
               description="Installation, rénovation et mise aux normes électriques."
               slug="electricite"
-              image="/images/electricite.jpg"
+              image="/te.jpg"
               accent="bg-yellow-400"
             />
 
@@ -130,7 +131,7 @@ export default function HomePage() {
               title="Intervention après sinistre"
               description="Remise en état après dégâts des eaux et autres sinistres."
               slug="sinistre"
-              image="/images/sinistre.jpg"
+              image="/is.jpg"
               accent="bg-red-500"
             />
           </div>

@@ -53,7 +53,7 @@ const servicesData: Record<string, Service> = {
       "De la rénovation partielle à la transformation complète, nous vous accompagnons dans l'aménagement de votre salle de bain : douche, baignoire, faïence, meubles et finitions.",
     heroImage: "/dou.png",
     subtypes: [
-      { name: "Douche", image: "/dou.png" },
+      { name: "Douche", image: "/pdd.jpg" },
       { name: "Baignoire", image: "/baign.png" },
       { name: "Faïence", image: "/fai.jpg" },
       { name: "Meuble", image: "/meu.png" },

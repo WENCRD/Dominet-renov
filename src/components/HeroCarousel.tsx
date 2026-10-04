@@ -2,12 +2,16 @@ import { useRef, useEffect, useState } from "react";
 
 const images = [
   {
-    src: "/acceuil.jpg",
-    label: "Rénovation intérieure",
+    src: "/sdbc.avif",
+    label: "Un espace pensé pour votre confort",
   },
   {
-    src: "/sol.jpg",
-    label: "Des finitions soignées",
+    src: "/salon.avif",
+    label: "Transformez votre intérieur",
+  },
+  {
+    src: "/cuisine.avif",
+    label: "Une cuisine à votre image",
   },
 ];
 
