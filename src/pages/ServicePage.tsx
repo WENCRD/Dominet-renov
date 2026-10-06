@@ -22,7 +22,7 @@ const servicesData: Record<string, Service> = {
       "Redonnez vie à votre intérieur avec des finitions soignées et durables.",
     details:
       "DOMINET RÉNOVATION intervient pour vos travaux de peinture, de la préparation des supports jusqu'aux finitions. Chaque surface est travaillée avec soin pour obtenir un résultat propre, homogène et durable.",
-    heroImage: asset("/muri.jpg"),
+    heroImage: asset("/pc.jpg"),
     subtypes: [
       { name: "Murs", image: asset("/muri.jpg") },
       { name: "Plafonds", image: asset("/spots.jpg") },
@@ -37,7 +37,7 @@ const servicesData: Record<string, Service> = {
       "Des sols esthétiques et résistants adaptés à chaque pièce.",
     details:
       "Parquet, stratifié, carrelage ou vinyle : nous préparons les supports et réalisons une pose soignée afin d'obtenir un résultat esthétique, régulier et durable.",
-    heroImage: asset("/parq.png"),
+    heroImage: asset("/pp.png"),
     subtypes: [
       { name: "Parquet", image: asset("/parq.png") },
       { name: "Stratifié", image: asset("/strat.png") },
@@ -55,9 +55,9 @@ const servicesData: Record<string, Service> = {
     heroImage: asset("/dou.png"),
     subtypes: [
       { name: "Douche", image: asset("/pdd.jpg") },
-      { name: "Baignoire", image: asset("/baign.png") },
+      { name: "Baignoire", image: asset("/b.jpg") },
       { name: "Faïence", image: asset("/fai.jpg") },
-      { name: "Meuble", image: asset("/meu.png") },
+      { name: "Meuble", image: asset("/mv.avif") },
     ],
   },
 
@@ -67,12 +67,12 @@ const servicesData: Record<string, Service> = {
       "Repensez vos espaces et améliorez le confort de votre logement.",
     details:
       "Création de cloisons, doublage, faux plafonds et isolation : nous réalisons les travaux nécessaires pour aménager vos espaces et améliorer leur confort thermique et acoustique.",
-    heroImage: asset("/rail.png"),
+    heroImage: asset("/clmc.jpg"),
     subtypes: [
-      { name: "Cloisons", image: asset("/rail.png") },
-      { name: "Isolation", image: asset("/lain.jpg") },
-      { name: "Plafond", image: asset("/plaf.jpeg") },
-      { name: "Placo", image: asset("/pla.png") },
+      { name: "Cloisons", image: asset("/clm.jpg") },
+      { name: "Isolation", image: asset("/isml.jpg") },
+      { name: "Plafond", image: asset("/spots.jpg") },
+      { name: "Placo", image: asset("/pmr.jpg") },
     ],
   },
 
@@ -82,11 +82,11 @@ const servicesData: Record<string, Service> = {
       "Des aménagements pratiques qui s'intègrent naturellement à votre intérieur.",
     details:
       "Pose de portes, fenêtres, cuisines et rangements : DOMINET RÉNOVATION réalise différents travaux de menuiserie et d'aménagement pour améliorer votre intérieur.",
-    heroImage: asset("/cui.jpg"),
+    heroImage: asset("/pm.webp"),
     subtypes: [
-      { name: "Portes", image: asset("/port.jpg") },
-      { name: "Fenêtres", image: asset("/fen.jpg") },
-      { name: "Cuisine", image: asset("/cui.jpg") },
+      { name: "Portes", image: asset("/pem.jpg") },
+      { name: "Fenêtres", image: asset("/fpvc.jpg") },
+      { name: "Cuisine", image: asset("/cr.avif") },
       { name: "Rangements", image: asset("/dress.jpg") },
     ],
   },
@@ -111,11 +111,11 @@ const servicesData: Record<string, Service> = {
       "Des installations électriques adaptées à vos projets de rénovation.",
     details:
       "Dans le cadre de vos travaux de rénovation, nous intervenons sur différents équipements électriques : éclairages, prises, interrupteurs et installations associées.",
-    heroImage: asset("/electricite.jpg"),
+    heroImage: asset("/gtl.webp"),
     subtypes: [
-      { name: "Éclairage", image: asset("/eclairage.jpg") },
-      { name: "Prises", image: asset("/prises.jpg") },
-      { name: "Installation", image: asset("/electricite.jpg") },
+      { name: "Éclairage", image: asset("/ssp.webp") },
+      { name: "Prises", image: asset("/pdx.jpg") },
+      { name: "Installation", image: asset("/te.jpg") },
     ],
   },
 
@@ -125,11 +125,11 @@ const servicesData: Record<string, Service> = {
       "Remettez votre logement en état après un dégât ou un sinistre.",
     details:
       "Après un dégât des eaux ou un autre sinistre, nous intervenons pour remettre en état les surfaces endommagées : murs, plafonds, peintures, sols et autres éléments nécessitant une rénovation.",
-    heroImage: asset("/sinistre.jpg"),
+    heroImage: asset("/snm.webp"),
     subtypes: [
-      { name: "Dégât des eaux", image: asset("/degat-eaux.jpg") },
-      { name: "Remise en état", image: asset("/sinistre.jpg") },
-      { name: "Rénovation", image: asset("/renovation.jpg") },
+      { name: "Dégât des eaux", image: asset("/is.jpg") },
+      { name: "Remise en état", image: asset("/cps.png") },
+      { name: "Rénovation", image: asset("/rns.jpg") },
     ],
   },
 };

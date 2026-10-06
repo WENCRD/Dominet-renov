@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { X, Images, ArrowUp } from "lucide-react";
+
 import Footer from "../components/Footer";
 import { asset } from "../utils/asset";
 
 type Realisation = {
-  image: string;
+  before: string;
+  after: string;
   service: string;
 };
 
@@ -17,42 +19,30 @@ type Service = {
 
 const realisationsData: Realisation[] = [
   // SOL
-  { image: asset("/realisations/sol/sol1.jpg"), service: "sol" },
-  { image: asset("/realisations/sol/sol2.jpg"), service: "sol" },
-  { image: asset("/realisations/sol/sol3.jpg"), service: "sol" },
+  {
+    before: asset("/realisations/sol/sol1-avant.jpg"),
+    after: asset("/realisations/sol/sol1-apres.jpg"),
+    service: "sol",
+  },
+  {
+    before: asset("/realisations/sol/sol2-avant.jpg"),
+    after: asset("/realisations/sol/sol2-apres.jpg"),
+    service: "sol",
+  },
 
   // PEINTURE
   {
-    image: asset("/realisations/peinture/peinture1.jpg"),
-    service: "peinture",
-  },
-  {
-    image: asset("/realisations/peinture/peinture2.jpg"),
+    before: asset("/realisations/peinture/peinture1-avant.jpg"),
+    after: asset("/realisations/peinture/peinture1-apres.jpg"),
     service: "peinture",
   },
 
   // SALLE DE BAIN
-  { image: asset("/realisations/sdb/sdb1.jpg"), service: "salledebain" },
-  { image: asset("/realisations/sdb/sdb2.jpg"), service: "salledebain" },
-
-  // PLACO
-  { image: asset("/realisations/placo/placo1.jpg"), service: "placo" },
-
-  // MENUISERIE
   {
-    image: asset("/realisations/menuiserie/menuiserie1.jpg"),
-    service: "menuiserie",
+    before: asset("/realisations/sdb/sdb1-avant.jpg"),
+    after: asset("/realisations/sdb/sdb1-apres.jpg"),
+    service: "salledebain",
   },
-
-  // FAÇADE
-  {
-    image: asset("/realisations/facade/facade1.jpg"),
-    service: "facade",
-  },
-
-  // Quand tu auras les photos :
-  // { image: asset("/realisations/electricite/electricite1.jpg"), service: "electricite" },
-  // { image: asset("/realisations/sinistre/sinistre1.jpg"), service: "sinistre" },
 ];
 
 const services: Service[] = [
@@ -100,8 +90,10 @@ const services: Service[] = [
 
 export default function RealisationsPage() {
   const location = useLocation();
+
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [flippedCard, setFlippedCard] = useState<string | null>(null);
 
   // Scroll automatique vers le service demandé
   useEffect(() => {
@@ -130,7 +122,7 @@ export default function RealisationsPage() {
     };
   }, [selectedImage]);
 
-  // Affiche le bouton "Retour en haut"
+  // Affiche le bouton retour en haut
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 600);
@@ -149,7 +141,6 @@ export default function RealisationsPage() {
       <section className="bg-white">
         <div className="container-pro py-12 md:py-16 lg:py-20">
           <div className="max-w-3xl">
-
             <div className="flex items-center gap-3">
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-blue/10">
                 <Images className="w-5 h-5 text-brand-blue" />
@@ -168,6 +159,7 @@ export default function RealisationsPage() {
               Découvrez quelques exemples de travaux réalisés dans différents
               domaines de la rénovation.
             </p>
+
             {/* Navigation vers les réalisations */}
             <div className="mt-8">
               <p className="text-sm font-semibold text-slate-500 mb-4">
@@ -187,30 +179,30 @@ export default function RealisationsPage() {
                       key={service.id}
                       href={`#${service.id}`}
                       className="
-            inline-flex
-            items-center
-            gap-2
-            rounded-full
-            border border-slate-200
-            bg-white
-            px-4 py-2.5
-            text-sm
-            font-medium
-            text-slate-700
-            shadow-sm
-            transition
-            hover:-translate-y-0.5
-            hover:border-brand-blue
-            hover:text-brand-blue
-            hover:shadow-md
-          "
+                        inline-flex
+                        items-center
+                        gap-2
+                        rounded-full
+                        border border-slate-200
+                        bg-white
+                        px-4 py-2.5
+                        text-sm
+                        font-medium
+                        text-slate-700
+                        shadow-sm
+                        transition
+                        hover:-translate-y-0.5
+                        hover:border-brand-blue
+                        hover:text-brand-blue
+                        hover:shadow-md
+                      "
                     >
                       <span
                         className={`
-              w-2.5 h-2.5
-              rounded-full
-              ${service.accent}
-            `}
+                          w-2.5 h-2.5
+                          rounded-full
+                          ${service.accent}
+                        `}
                       />
 
                       {service.label}
@@ -226,7 +218,6 @@ export default function RealisationsPage() {
       {/* GALERIE */}
       <section className="bg-slate-50 py-12 md:py-20">
         <div className="container-pro">
-
           {services.map((service) => {
             const photos = realisationsData.filter(
               (realisation) => realisation.service === service.id
@@ -248,7 +239,6 @@ export default function RealisationsPage() {
               >
                 {/* TITRE SERVICE */}
                 <div className="flex items-center gap-4 mb-8 md:mb-10">
-
                   <span
                     className={`
                       w-3 h-3
@@ -267,114 +257,190 @@ export default function RealisationsPage() {
                       {service.label}
                     </h2>
                   </div>
-
                 </div>
 
-                {/* PHOTOS */}
+                {/* PHOTOS AVANT / APRÈS */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5 md:gap-6">
                   {photos.map((realisation, index) => {
                     const large =
                       photos.length >= 3 && index % 3 === 0;
 
+                    const cardId = `${service.id}-${index}`;
+                    const isFlipped = flippedCard === cardId;
+
                     return (
-                      <button
-                        key={realisation.image}
-                        type="button"
-                        onClick={() =>
-                          setSelectedImage(realisation.image)
-                        }
+                      <div
+                        key={`${realisation.before}-${realisation.after}`}
                         className={`
-                          relative
-                          overflow-hidden
-                          rounded-3xl
-                          shadow-md
                           group
-                          text-left
-                          ${large
-                            ? "lg:col-span-7"
-                            : "lg:col-span-5"
-                          }
+                          [perspective:1200px]
+                          ${large ? "lg:col-span-7" : "lg:col-span-5"}
                         `}
                       >
                         <div
                           className={`
-                            overflow-hidden
-                            ${large
-                              ? "h-[300px] sm:h-[380px] lg:h-[460px]"
-                              : "h-[300px] sm:h-[380px] lg:h-[460px]"
+  relative
+  h-[300px]
+  sm:h-[380px]
+  lg:h-[460px]
+  rounded-3xl
+  shadow-md
+  transition-transform
+  duration-700
+  [transform-style:preserve-3d]
+
+  ${isFlipped
+                              ? "[transform:rotateY(180deg)]"
+                              : "[transform:rotateY(0deg)]"
                             }
-                          `}
+`}
                         >
-                          <img
-                            src={realisation.image}
-                            alt={`${service.label} - réalisation ${index + 1}`}
+                          {/* AVANT */}
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setFlippedCard(cardId);
+                            }}
+                            onDoubleClick={() => {
+                              setSelectedImage(realisation.before);
+                            }}
                             className="
-                              w-full h-full
-                              object-cover
-                              transition-transform
-                              duration-700
-                              group-hover:scale-105
+                              absolute
+                              inset-0
+                              w-full
+                              h-full
+                              overflow-hidden
+                              rounded-3xl
+                              [backface-visibility:hidden]
                             "
-                          />
+                          >
+                            <img
+                              src={realisation.before}
+                              alt={`${service.label} - avant travaux ${index + 1
+                                }`}
+                              className="
+                                w-full
+                                h-full
+                                object-cover
+                              "
+                            />
+
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                            {/* Badge AVANT */}
+                            <div
+                              className="
+                                absolute
+                                top-5 left-5
+                                rounded-full
+                                bg-white/95
+                                px-4 py-2
+                                text-xs
+                                font-bold
+                                tracking-wider
+                                text-slate-800
+                                shadow-lg
+                              "
+                            >
+                              AVANT
+                            </div>
+
+                            {/* Texte */}
+                            <div className="absolute bottom-5 left-5 right-5 text-left text-white">
+
+                              <p className="text-sm font-medium">
+                                Cliquez pour voir après • Double-cliquez pour agrandir
+                              </p>
+
+                            </div>
+
+                            {/* Ligne couleur */}
+                            <div
+                              className={`
+                                absolute
+                                bottom-0 left-0
+                                h-[5px] w-full
+                                ${service.accent}
+                              `}
+                            />
+                          </button>
+
+                          {/* APRÈS */}
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setFlippedCard(null);
+                            }}
+                            onDoubleClick={() => {
+                              setSelectedImage(realisation.after);
+                            }}
+                            className="
+                              absolute
+                              inset-0
+                              w-full
+                              h-full
+                              overflow-hidden
+                              rounded-3xl
+                              [backface-visibility:hidden]
+                              [transform:rotateY(180deg)]
+                            "
+                          >
+                            <img
+                              src={realisation.after}
+                              alt={`${service.label} - après travaux ${index + 1
+                                }`}
+                              className="
+                                w-full
+                                h-full
+                                object-cover
+                              "
+                            />
+
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                            {/* Badge APRÈS */}
+                            <div
+                              className="
+                                absolute
+                                top-5 left-5
+                                rounded-full
+                                bg-brand-blue
+                                px-4 py-2
+                                text-xs
+                                font-bold
+                                tracking-wider
+                                text-white
+                                shadow-lg
+                              "
+                            >
+                              APRÈS
+                            </div>
+
+                            {/* Texte */}
+                            <div className="absolute bottom-5 left-5 right-5 text-left text-white">
+                              <p className="text-sm font-medium">
+                                Cliquez pour voir avant • Double-cliquez pour agrandir
+                              </p>
+                            </div>
+
+                            {/* Ligne couleur */}
+                            <div
+                              className={`
+                                absolute
+                                bottom-0 left-0
+                                h-[5px] w-full
+                                ${service.accent}
+                              `}
+                            />
+                          </button>
                         </div>
-
-                        {/* Dégradé au survol */}
-                        <div
-                          className="
-                            absolute inset-0
-                            bg-gradient-to-t
-                            from-black/50
-                            via-transparent
-                            to-transparent
-                            opacity-0
-                            group-hover:opacity-100
-                            transition-opacity
-                            duration-300
-                          "
-                        />
-
-                        {/* Numéro */}
-                        <div
-                          className="
-                            absolute
-                            bottom-5 left-5
-                            flex items-center gap-2
-                            opacity-0
-                            group-hover:opacity-100
-                            transition
-                            text-white
-                          "
-                        >
-                          <span
-                            className={`
-                              w-2.5 h-2.5
-                              rounded-full
-                              ${service.accent}
-                            `}
-                          />
-
-                          <span className="text-sm font-medium">
-                            Voir la réalisation
-                          </span>
-                        </div>
-
-                        {/* Ligne couleur */}
-                        <div
-                          className={`
-                            absolute
-                            bottom-0 left-0
-                            h-[5px] w-full
-                            ${service.accent}
-                          `}
-                        />
-                      </button>
+                      </div>
                     );
                   })}
                 </div>
               </section>
             );
           })}
-
         </div>
       </section>
 
@@ -391,23 +457,23 @@ export default function RealisationsPage() {
             })
           }
           className="
-      fixed
-      bottom-5 right-5
-      sm:bottom-7 sm:right-7
-      z-40
-      flex
-      h-12 w-12
-      items-center justify-center
-      rounded-full
-      bg-brand-blue
-      text-white
-      shadow-xl
-      transition-all
-      duration-300
-      hover:-translate-y-1
-      hover:bg-brand-blue/90
-      hover:shadow-2xl
-    "
+            fixed
+            bottom-5 right-5
+            sm:bottom-7 sm:right-7
+            z-40
+            flex
+            h-12 w-12
+            items-center justify-center
+            rounded-full
+            bg-brand-blue
+            text-white
+            shadow-xl
+            transition-all
+            duration-300
+            hover:-translate-y-1
+            hover:bg-brand-blue/90
+            hover:shadow-2xl
+          "
           aria-label="Retour en haut de la page"
           title="Retour en haut"
         >
